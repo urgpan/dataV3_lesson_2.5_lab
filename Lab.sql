@@ -18,14 +18,16 @@ select floor(avg(length) / 60) as avg_length_hours, floor(avg(length) - 60) as a
 select count(distinct(last_name)) from sakila.actor;
 
 #6
-select datediff(min(rental_date),max(rental_date)) as time_operating from sakila.rental;
+select datediff(max(rental_date),min(rental_date)) as time_operating from sakila.rental;
 
 #7
-select rental_id, rental_date, MONTHNAME(rental_date), DAYNAME(rental_date) from sakila.rental;
+select rental_id, rental_date, MONTHNAME(rental_date), DAYNAME(rental_date) from sakila.rental 
+limit 20;
 
 #8
 select rental_id, rental_date, MONTH(rental_date), WEEKDAY(rental_date), WEEKDAY(rental_date) < 5 as 'WORKDAY' from sakila.rental;
 
 #9
-select count(rental_date) from sakila.rental;
+select count(rental_date) from sakila.rental
+where MONTH(rental_date) = 8;
 
